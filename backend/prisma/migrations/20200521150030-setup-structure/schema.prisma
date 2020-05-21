@@ -1,0 +1,26 @@
+datasource db {
+  provider = "mysql"
+  url = "***"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model users {
+  id         Int      @default(autoincrement()) @id
+  email      String   @unique
+  password   String
+  name       String?
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model places {
+  id         Int      @default(autoincrement()) @id
+  name       String   @unique
+  votes      Int      @default(0)
+  image_url  String?
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
